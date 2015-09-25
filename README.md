@@ -29,3 +29,7 @@ By firing up one command, htail gives you in your terminal and in your browser:
 Provided that you have Go installed, just run:
 
 - `go get github.com/delatech/htail`
+
+## Credits
+
+Created by Marc Weistroff for [DeLaTech](http://www.delatech.net)
