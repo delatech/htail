@@ -2,13 +2,6 @@
 
 An utility that displays your common logs, to stdout and in the browser
 
-## Why
-
-I was tired of searching for all my log files when debugging issues that could
-span multiple applications. I wanted to fire up one command and be able to read
-all log files that were affected by an action. A few hours of coding later, I
-came up to that.
-
 By firing up one command, htail gives you in your terminal and in your browser:
 
 - Your applications logs
@@ -18,6 +11,14 @@ By firing up one command, htail gives you in your terminal and in your browser:
 
 ![how-it-works](https://i.gyazo.com/439e1ce9b4156661a52b2fe869418209.gif)
 
+## Why
+
+I was tired of searching for all my log files when debugging issues that could
+span multiple applications. I wanted to fire up one command and be able to read
+all log files that were affected by an action. A few hours of coding later, I
+came up to that. Other solutions exists, but I wanted it to be platform
+independent and be easily deployable.
+
 ## Usage
 
 - `htail`: Run htails with the default options
@@ -26,7 +27,7 @@ By firing up one command, htail gives you in your terminal and in your browser:
 
 ## Installation
 
-Provided that you have Go installed, just run:
+Provided that you have Go installed, run:
 
 - `go get github.com/delatech/htail`
 
