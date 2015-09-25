@@ -16,6 +16,8 @@ By firing up one command, htail gives you in your terminal and in your browser:
 - Your database logs
 - Your system logs
 
+![how-it-works](https://i.gyazo.com/439e1ce9b4156661a52b2fe869418209.gif)
+
 ## Usage
 
 - `htail`: Run htails with the default options
