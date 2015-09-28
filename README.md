@@ -21,9 +21,19 @@ independent and be easily deployable.
 
 ## Usage
 
+`htail` is configurable via the command line.
+
 - `htail`: Run htails with the default options
 - `htail /my/log1 /my/log2`: tail the two provided files
 - `htail -h`: Display help
+
+`htail` also parses the `HTAIL_PATH` environment variable for directories or
+log files to parses. The format is the same as the `PATH` environment variable:
+
+    export HTAIL_PATH="/var/log:/usr/local/var/log:/my/path/to/projects/*/logs/dev.log"
+    htail
+    # Similar to
+    htail /var/log /usr/local/var/log '/my/path/to/projects/*/logs/dev.log'
 
 ## Installation
 

@@ -12,6 +12,7 @@ import (
 	"path"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"text/template"
 
 	"github.com/Sirupsen/logrus"
@@ -89,6 +90,9 @@ func ScanPaths(paths []string) []string {
 func main() {
 	flag.Parse()
 	files := flag.Args()
+	if len(files) == 0 {
+		files = strings.Split(os.Getenv("HTAIL_PATH"), ":")
+	}
 	if len(files) != 0 {
 		cfg.Paths = files
 	}
