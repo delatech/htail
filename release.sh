@@ -102,7 +102,7 @@ export AWS_ACCESS_KEY_ID=$AWS_DELATECH_S3_APT_KEY
 export AWS_SECRET_ACCESS_KEY=$AWS_DELATECH_S3_APT_SECRET
 
 xc
-#deb
-#publish_debian
+deb
+publish_debian
 osx
 publish_homebrew
