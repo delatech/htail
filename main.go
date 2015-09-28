@@ -100,11 +100,9 @@ func main() {
 
 	cfg.Paths = paths
 	files := ScanPaths(cfg.Paths)
-	if len(files) == 0 {
-		log.Fatalln("No files found. Please provide at least a file.")
-	}
 
 	tailer := NewTailer()
+	tailer.AddReader("stdin", os.Stdin)
 	for _, f := range files {
 		if cfg.Verbose {
 			log.Printf("Tailing %s\n", f)

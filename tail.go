@@ -1,7 +1,11 @@
 package main
 
 import (
+	"bufio"
+	"io"
+	"log"
 	"os"
+	"time"
 
 	"github.com/ActiveState/tail"
 )
@@ -42,6 +46,33 @@ func (t *Tailer) AddFile(filename string) error {
 	}
 	t.files[filename] = tf
 	return nil
+}
+
+func (t *Tailer) AddReader(name string, r io.Reader) {
+	go func() {
+		br := bufio.NewReader(r)
+		for {
+			l, err := br.ReadString('\n')
+			if l == "" && err == io.EOF {
+				return
+			}
+
+			line := Line{
+				File: name,
+				Text: l,
+				Time: time.Now().Unix(),
+			}
+
+			t.lines <- line
+
+			if err != nil {
+				if err != io.EOF {
+					log.Printf("Error while reading from %s: %s\n", name, err)
+				}
+				return
+			}
+		}
+	}()
 }
 
 func (t *Tailer) AddOutput(out Output) {
