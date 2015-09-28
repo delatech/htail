@@ -37,9 +37,21 @@ log files to parses. The format is the same as the `PATH` environment variable:
 
 ## Installation
 
-Provided that you have Go installed, run:
+### Debian
 
-- `go get github.com/delatech/htail`
+    echo "deb http://apt.delatech.net/ squeeze main" >> /etc/apt/sources.list
+    curl https://raw.githubusercontent.com/delatech/gpg/master/delatech-public-key-sign.asc | apt-key add -
+    apt-get update
+    apt-get install htail
+
+### OSX
+
+    brew tap delatech/delatech
+    brew install htail
+
+### Anywhere with a valid Go installation
+
+    go get github.com/delatech/htail
 
 ## Credits
 
