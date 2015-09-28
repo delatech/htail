@@ -8,5 +8,13 @@ var DefaultPaths = []string{
 }
 
 func openBrowser(url string) error {
-	return exec.Command("xdg-open", url).Run()
+	open, err := exec.LookPath("xdg-open")
+	if err != nil {
+		open, err = exec.LookPath("x-www-browser")
+		if err != nil {
+			return nil
+		}
+	}
+
+	return exec.Command(open, url).Run()
 }
