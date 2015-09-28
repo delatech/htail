@@ -19,6 +19,18 @@ all log files that were affected by an action. A few hours of coding later, I
 came up to that. Other solutions exists, but I wanted it to be platform
 independent and be easily deployable.
 
+## Differences with tail
+
+|                                      | htail      | tail      |
+|--------------------------------------|------------|-----------|
+| Type of features                     | high level | low level |
+| Distribution for linux/osx           | yes        | yes       |
+| Multiple files support               | yes        | yes       |
+| Read from standard input             | yes        | yes       |
+| Display common log files by default  | yes        | no        |
+| HTTP output                          | yes        | no        |
+| maturity                             | alpha      | stable    |
+
 ## Usage
 
 `htail` is configurable via the command line.
