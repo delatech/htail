@@ -89,14 +89,19 @@ func ScanPaths(paths []string) []string {
 
 func main() {
 	flag.Parse()
-	files := flag.Args()
-	if len(files) == 0 {
-		files = strings.Split(os.Getenv("HTAIL_PATH"), ":")
+	paths := flag.Args()
+	// if there's nothing on the argument line, we check for the environment variable
+	if len(paths) == 0 {
+		paths = strings.Split(os.Getenv("HTAIL_PATH"), ":")
+
+		// if there's nothing in the env var, we switch to the default
+		if len(paths) == 1 && paths[0] == "" {
+			paths = DefaultPaths
+		}
 	}
-	if len(files) != 0 {
-		cfg.Paths = files
-	}
-	files = ScanPaths(cfg.Paths)
+
+	cfg.Paths = paths
+	files := ScanPaths(cfg.Paths)
 	if len(files) == 0 {
 		log.Fatalln("No files found. Please provide at least a file.")
 	}
