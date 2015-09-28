@@ -7,11 +7,9 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"os/exec"
 	"os/signal"
 	"path"
 	"path/filepath"
-	"runtime"
 	"strings"
 	"text/template"
 
@@ -150,9 +148,8 @@ func main() {
 					log.Fatalf("Error starting HTTP server: %s\n", err)
 				}
 			}()
-			if runtime.GOOS == "darwin" && !cfg.NoOpen {
-				err := exec.Command("open", fmt.Sprintf("http://%s", cfg.Host)).Run()
-				if err != nil {
+			if !cfg.NoOpen {
+				if err := openBrowser(fmt.Sprintf("http://%s", cfg.Host)); err != nil {
 					log.Printf("Error while trying to open browser: %s\n", err)
 				}
 			}
