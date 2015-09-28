@@ -1,5 +1,6 @@
 package main
 
 var DefaultPaths = []string{
-	"/var/log", // default log directory
+	"/var/log/*.log",
+	"/var/log/*/*.log",
 }
