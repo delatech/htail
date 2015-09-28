@@ -17,6 +17,9 @@ import (
 	"golang.org/x/net/websocket"
 )
 
+// will be populated at build time
+var version string
+
 // Config holds the program configuration
 type Config struct {
 	Paths    []string
@@ -25,6 +28,7 @@ type Config struct {
 	NoOpen   bool
 	NoHTTP   bool
 	Verbose  bool
+	Version  bool
 }
 
 var cfg = &Config{Paths: DefaultPaths}
@@ -35,6 +39,7 @@ func init() {
 	flag.BoolVar(&cfg.NoStdout, "no-stdout", false, "Disable output to stdout")
 	flag.BoolVar(&cfg.NoHTTP, "no-http", false, "Disable output to http")
 	flag.BoolVar(&cfg.Verbose, "v", false, "Verbose output")
+	flag.BoolVar(&cfg.Version, "version", false, "Verbose output")
 }
 
 func scanDir(dir string) []string {
@@ -87,6 +92,11 @@ func ScanPaths(paths []string) []string {
 
 func main() {
 	flag.Parse()
+	if cfg.Version {
+		log.Printf("%s - Version %s", os.Args[0], version)
+		os.Exit(0)
+	}
+
 	paths := flag.Args()
 	// if there's nothing on the argument line, we check for the environment variable
 	if len(paths) == 0 {

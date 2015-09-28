@@ -16,11 +16,13 @@ if  [ ! -d "bin" ]; then
     mkdir bin
 fi
 
+
+
 function xc {
     echo ">>> Cross compiling htail"
-    GOOS=linux GOARCH=amd64 go build -o bin/htail-${version}-linux-amd64
-    GOOS=linux GOARCH=386 go build -o bin/htail-${version}-linux-i386
-    GOOS=darwin GOARCH=amd64 go build -o bin/htail-${version}-darwin-amd64
+    GOOS=linux GOARCH=amd64 go build -ldflags "-X main.version=${version}" -o bin/htail-${version}-linux-amd64
+    GOOS=linux GOARCH=386 go build -ldflags "-X main.version=${version}" -o bin/htail-${version}-linux-i386
+    GOOS=darwin GOARCH=amd64 go build -ldflags "-X main.version=${version}" -o bin/htail-${version}-darwin-amd64
 }
 
 function deb {
